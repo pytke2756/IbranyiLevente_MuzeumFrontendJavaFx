@@ -28,4 +28,20 @@ public class Szobor {
     public int getPrice() {
         return price;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setPerson(String person) {
+        this.person = person;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }

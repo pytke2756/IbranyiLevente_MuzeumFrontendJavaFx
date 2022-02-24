@@ -29,6 +29,21 @@ public class MainController extends Controller{
 
     @FXML
     public void onClickFestmenyModositasButton(ActionEvent actionEvent) {
+        int selectedIndex = festmenyekTableView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A módosításhoz előbb válasszon ki egy festményt a táblázatból");
+            return;
+        }
+        Festmeny modositando = festmenyekTableView.getSelectionModel().getSelectedItem();
+        try {
+            FestmenyModositController modositas = (FestmenyModositController) ujAblak("modosit-festmeny-view.fxml",
+                    "Festmény módosítása", 320, 400);
+            modositas.setModositando(modositando);
+            modositas.getStage().setOnHiding(event -> festmenyekTableView.refresh());
+            modositas.getStage().show();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
@@ -65,6 +80,21 @@ public class MainController extends Controller{
 
     @FXML
     public void onClickSzoborModositasButton(ActionEvent actionEvent) {
+        int selectedIndex = szobrokTableView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A módosításhoz előbb válasszon ki egy szobrot a táblázatból");
+            return;
+        }
+        Szobor modositando = szobrokTableView.getSelectionModel().getSelectedItem();
+        try {
+            SzoborModositController modositas = (SzoborModositController) ujAblak("modosit-szobor-view.fxml",
+                    "Szobor módosítása", 320, 400);
+            modositas.setModositando(modositando);
+            modositas.getStage().setOnHiding(event -> szobrokTableView.refresh());
+            modositas.getStage().show();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML

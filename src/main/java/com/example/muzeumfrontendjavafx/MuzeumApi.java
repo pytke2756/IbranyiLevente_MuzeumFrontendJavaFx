@@ -62,8 +62,8 @@ public class MuzeumApi {
 
     public static Festmeny festmenyHozzaadasa(Festmeny ujFestmeny) throws IOException {
         Gson jsonConvert = new Gson();
-        String filmJson =  jsonConvert.toJson(ujFestmeny);
-        Response response = RequestHandler.post(FESTMENY_API_URL, filmJson);
+        String festmenyJson =  jsonConvert.toJson(ujFestmeny);
+        Response response = RequestHandler.post(FESTMENY_API_URL, festmenyJson);
 
         String json = response.getContent();
         if (response.getResponseCode() >= 400){
@@ -75,8 +75,34 @@ public class MuzeumApi {
 
     public static Szobor szoborHozzaadasa(Szobor ujSzobor) throws IOException {
         Gson jsonConvert = new Gson();
-        String filmJson =  jsonConvert.toJson(ujSzobor);
-        Response response = RequestHandler.post(SZOBOR_API_URL, filmJson);
+        String szoborJson =  jsonConvert.toJson(ujSzobor);
+        Response response = RequestHandler.post(SZOBOR_API_URL, szoborJson);
+
+        String json = response.getContent();
+        if (response.getResponseCode() >= 400){
+            String message = jsonConvert.fromJson(json, ApiError.class).getMessage();
+            throw new IOException(message);
+        }
+        return jsonConvert.fromJson(json,Szobor.class);
+    }
+
+    public static Festmeny festmenyModositas(Festmeny modositando) throws IOException {
+        Gson jsonConvert = new Gson();
+        String festmenyJson =  jsonConvert.toJson(modositando);
+        Response response = RequestHandler.put(FESTMENY_API_URL + "/" + modositando.getId(), festmenyJson);
+
+        String json = response.getContent();
+        if (response.getResponseCode() >= 400){
+            String message = jsonConvert.fromJson(json, ApiError.class).getMessage();
+            throw new IOException(message);
+        }
+        return jsonConvert.fromJson(json,Festmeny.class);
+    }
+
+    public static Szobor szoborModositas(Szobor modositando) throws IOException {
+        Gson jsonConvert = new Gson();
+        String szoborJson =  jsonConvert.toJson(modositando);
+        Response response = RequestHandler.put(SZOBOR_API_URL + "/" + modositando.getId(), szoborJson);
 
         String json = response.getContent();
         if (response.getResponseCode() >= 400){

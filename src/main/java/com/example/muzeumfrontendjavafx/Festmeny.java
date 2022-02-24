@@ -33,7 +33,19 @@ public class Festmeny {
         }
     }
 
-    public boolean is() {
-        return on_display;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public void setOn_display(boolean on_display) {
+        this.on_display = on_display;
     }
 }

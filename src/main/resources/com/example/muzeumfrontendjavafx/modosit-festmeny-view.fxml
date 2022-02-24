@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.FestmenyModositController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="50.0" text="Cím">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="festmenyCim" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="50.0" text="Év">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="festmenyEv" editable="true" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+                <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="1800" max="2022" min="1" />
+                </valueFactory>
+            </Spinner>
+         </children></HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <CheckBox fx:id="festmenyKiallitva" mnemonicParsing="false" text="Kiállítva">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+         </children>
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin></HBox>
+      <Button mnemonicParsing="false" onAction="#festmenyModositButtonClick" prefWidth="150.0" text="Módosít" />
+   </children>
+</VBox>

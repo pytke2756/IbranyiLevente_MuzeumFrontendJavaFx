@@ -2,34 +2,38 @@ package com.example.muzeumfrontendjavafx;
 
 public class Festmeny {
     private int id;
-    private String cim;
-    private int ev;
-    private int kiallitva;
+    private String title;
+    private int year;
+    private boolean on_display;
 
-    public Festmeny(int id, String cim, int ev, int kiallitva) {
+    public Festmeny(int id, String cim, int ev, boolean kiallitva) {
         this.id = id;
-        this.cim = cim;
-        this.ev = ev;
-        this.kiallitva = kiallitva;
+        this.title = cim;
+        this.year = ev;
+        this.on_display = kiallitva;
     }
 
     public int getId() {
         return id;
     }
 
-    public String getCim() {
-        return cim;
+    public String getTitle() {
+        return title;
     }
 
-    public int getEv() {
-        return ev;
+    public int getYear() {
+        return year;
     }
 
-    public String getKiallitva() {
-        if (this.kiallitva == 1){
+    public String getOn_display() {
+        if (this.on_display){
             return "igen";
         }else{
             return "nem";
         }
+    }
+
+    public boolean is() {
+        return on_display;
     }
 }

@@ -9,7 +9,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.io.IOException;
 import java.util.List;
 
-public class MainController {
+public class MainController extends Controller{
     @FXML
     private TableColumn<Festmeny, String> colFestmenyCim;
     @FXML
@@ -72,7 +72,7 @@ public class MainController {
                 festmenyekTableView.getItems().add(item);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            hibaKiir(e);
         }
     }
 
@@ -84,7 +84,7 @@ public class MainController {
                 szobrokTableView.getItems().add(item);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            hibaKiir(e);
         }
     }
 }

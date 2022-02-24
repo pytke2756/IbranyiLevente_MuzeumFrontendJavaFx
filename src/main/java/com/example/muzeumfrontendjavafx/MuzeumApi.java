@@ -59,4 +59,30 @@ public class MuzeumApi {
         }
         return response.getResponseCode() == 204;
     }
+
+    public static Festmeny festmenyHozzaadasa(Festmeny ujFestmeny) throws IOException {
+        Gson jsonConvert = new Gson();
+        String filmJson =  jsonConvert.toJson(ujFestmeny);
+        Response response = RequestHandler.post(FESTMENY_API_URL, filmJson);
+
+        String json = response.getContent();
+        if (response.getResponseCode() >= 400){
+            String message = jsonConvert.fromJson(json, ApiError.class).getMessage();
+            throw new IOException(message);
+        }
+        return jsonConvert.fromJson(json,Festmeny.class);
+    }
+
+    public static Szobor szoborHozzaadasa(Szobor ujSzobor) throws IOException {
+        Gson jsonConvert = new Gson();
+        String filmJson =  jsonConvert.toJson(ujSzobor);
+        Response response = RequestHandler.post(SZOBOR_API_URL, filmJson);
+
+        String json = response.getContent();
+        if (response.getResponseCode() >= 400){
+            String message = jsonConvert.fromJson(json, ApiError.class).getMessage();
+            throw new IOException(message);
+        }
+        return jsonConvert.fromJson(json,Szobor.class);
+    }
 }

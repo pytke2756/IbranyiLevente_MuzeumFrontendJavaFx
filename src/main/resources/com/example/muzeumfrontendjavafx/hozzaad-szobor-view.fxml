@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="230.0" prefWidth="330.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.muzeumfrontendjavafx.HozzaadSzoborController">
+   <children>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Label contentDisplay="TOP" prefWidth="65.0" text="Személy">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+               <padding>
+                  <Insets right="10.0" />
+               </padding>
+            </Label>
+            <TextField fx:id="szoborSzemely" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></TextField>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="TOP" prefWidth="80.0" text="Magasság">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Spinner fx:id="szoborMagassag" editable="true" prefWidth="200.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+                <valueFactory>
+                    <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="1" initialValue="180" max="300" min="1" />
+                </valueFactory>
+            </Spinner>
+         </children></HBox>
+      <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+         <VBox.margin>
+            <Insets bottom="20.0" />
+         </VBox.margin>
+         <children>
+            <Label text="Ár">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets right="35.0" />
+               </padding>
+            </Label>
+            <Spinner fx:id="szoborAr" prefWidth="200.0">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory amountToStepBy="100" initialValue="20000" max="50000000" min="1" />
+               </valueFactory>
+            </Spinner>
+         </children></HBox>
+      <Button mnemonicParsing="false" onAction="#szoborHozzaadButtonClick" prefWidth="150.0" text="Hozzáad" />
+   </children>
+</VBox>

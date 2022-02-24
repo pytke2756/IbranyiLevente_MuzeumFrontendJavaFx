@@ -33,6 +33,14 @@ public class MainController extends Controller{
 
     @FXML
     public void onClickFestmenyHozzaadasButton(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("hozzaad-festmeny-view.fxml", "Festmény hozzáadása",
+                    300, 230);
+            hozzadas.getStage().setOnCloseRequest(event -> festmenyFeltolt());
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
@@ -81,6 +89,14 @@ public class MainController extends Controller{
 
     @FXML
     public void onClickSzoborHozzaadasButton(ActionEvent actionEvent) {
+        try {
+            Controller hozzadas = ujAblak("hozzaad-szobor-view.fxml", "Szobor hozzáadása",
+                    300, 230);
+            hozzadas.getStage().setOnCloseRequest(event -> szoborFeltolt());
+            hozzadas.getStage().show();
+        } catch (Exception e) {
+            hibaKiir(e);
+        }
     }
 
     public void initialize(){

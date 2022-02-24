@@ -37,6 +37,22 @@ public class MainController extends Controller{
 
     @FXML
     public void onClickFestmenyTorlesButton(ActionEvent actionEvent) {
+        int selectedIndex = festmenyekTableView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A törléshez előbb válasszon ki egy elemet a festmények táblázatból");
+            return;
+        }
+        Festmeny torlendoFestmeny = festmenyekTableView.getSelectionModel().getSelectedItem();
+        if (!confirm("Biztos hogy törölni szeretné az alábbi festményt: "+torlendoFestmeny.getTitle())){
+            return;
+        }
+        try {
+            boolean sikeres = MuzeumApi.festmenyTorlese(torlendoFestmeny.getId());
+            alert(sikeres?"Sikeres törlés": "Sikertelen törlés");
+            festmenyFeltolt();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
@@ -45,6 +61,22 @@ public class MainController extends Controller{
 
     @FXML
     public void onClickSzoborTorlesButton(ActionEvent actionEvent) {
+        int selectedIndex = szobrokTableView.getSelectionModel().getSelectedIndex();
+        if (selectedIndex == -1){
+            alert("A törléshez előbb válasszon ki egy elemet a szobrot táblázatból");
+            return;
+        }
+        Szobor torlendoSzobor = szobrokTableView.getSelectionModel().getSelectedItem();
+        if (!confirm("Biztos hogy törölni szeretné az alábbi szobrot: "+torlendoSzobor.getPerson())){
+            return;
+        }
+        try {
+            boolean sikeres = MuzeumApi.szoborTorlese(torlendoSzobor.getId());
+            alert(sikeres?"Sikeres törlés": "Sikertelen törlés");
+            szoborFeltolt();
+        } catch (IOException e) {
+            hibaKiir(e);
+        }
     }
 
     @FXML
